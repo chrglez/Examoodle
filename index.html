@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en" class="customevent">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Generación automática de exámenes en PDF y cuestionarios Moodle con Mathematica. ASEPUMA 2017</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/print/paper.css">
+		<link rel="stylesheet" href="plugin/title-footer/title-footer.css">
+
+		<link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet'>
+	</head>
+	<body style="transition: -webkit-transform 0.8s ease 0s;">
+		<div class="reveal none center has-vertical-slides has-horizontal-slides ready" role="application" data-transition-speed="default" data-background-transition="fade">
+			<div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.898286);">
+				<section data-state="no-title-footer" data-background="images/portada.jpg">
+					<h1 class="title">Generación automática de exámenes en PDF y cuestionarios Moodle con Mathematica</h1>
+					<h4 class="author">Emilio Gómez / Nancy Dávila / Christian González</h4>
+					<h4 class="affilation">Universidad de Las Palmas de Gran Canaria</h4>
+					<div style="float:right;">
+					<h2 class="name_congress">XXV Jornadas de ASEPUMA - XIII Encuentro Internacional</h2>
+					<h3 class="date">A Coruña. Junio de 2017</h3>
+					</div>
+					<!--<div id="autores">
+						<ul>
+							<li>Emilio Gómez Déniz</li>
+							<li>Nancy Dávila Cárdenes</li>
+							<li>Christian González Martel</li>
+							<li style="font-style: oblique; font-size: 80%">Universidad de Las Palmas de Gran Canaria</li>
+						</ul>
+					</div>-->
+				</section>
+				<section>
+					<section>
+					<h3>Introducción</h3>
+					<ul>
+						<li>El proceso enseñanza-aprendizaje ha adquirido un carácter más dinámico.</li>
+						<li>Incorporacion, de forma generalizada,de la evaluacion continua</li>
+						<li>El propósito de estas evaluaciones es fomentar el estudio de la asignatura de forma continua y
+						evaluar los conocimientos y competencias a traves de la realizacion de pruebas.</li>
+						<li>Uso extendido de plataformas de aprendizaje como Moodle.</li>
+
+					</ul>
+					</section>
+
+					<section>
+						<h3>Matemáticas Empresariales</h3>
+					<ul>
+						<li>La evaluación continua representa el 40% de la calicacion final y consiste en dos pruebas que se realizan a lo largo
+del semestre.</li>
+						<li>Asignatura con un gran número de estudiantes provoca que se tenga que preparar un gran número de pruebas.</li>
+						<li>El trabajo previo de preparacion de las pruebas conlleva un gran volumen de trabajo para el profesorado implicado en la asignaturas.</li>
+					</ul>
+					</section>
+					<section>
+						<h3>Objetivos</h3>
+					<ul>
+						<li>En este trabajo presentamos una forma eficiente de preparar variados modelos de examen tipo test usando Mathematica, LaTeX y Moodle.</li>
+						<li>Se generan de forma sencilla preguntas que podrán ser utilizadas para generar exámenes en PDF o subirlas a la paltaforma Moodle para la realización de cuestionarios.</li>
+						<li>Las soluciones de las preguntas tambien se generan en el proceso.</li>
+					</ul>
+					</section>
+					</section>
+
+					<section>
+					<section>
+
+					<h4>XXIV JORNADAS ASEPUMA GRANADA 2016</h4>
+
+					<div style="float: left; width: 33%;">
+						<div>
+							<div>
+								<img class="img_noborder" src="images/tex.png" alt="TEX file" height="15%" width="15%">
+							</div>
+							<div>
+								<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+							</div>
+						</div>
+						<div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta 1
+						  </div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta 2
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta 3
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta 4
+						  </div>
+						</div>
+					</div>
+
+
+					<div style="float: left; width: 33%;">
+					  <div>
+					    <img class="img_noborder" src="images/tex.png" alt="TEX file" height="15%" width="15%">
+					  </div>
+					  <div>
+						<div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta 1
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta 4
+						  </div>
+						 </div>
+						 <div style="margin-top: 10px;">
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta 2
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta 3
+						  </div>
+						  </div>
+						  <div  style="margin-top: 10px;">
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta 1
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta 3
+						  </div>
+						  </div>
+
+						</div>
+					</div>
+					<div style="float: left; width: 33%;">
+
+					 <img class="img_noborder" src="images/pdf2.png" alt="PDF file" height="15%" width="15%">
+
+					</div>
+
+					</section>
+					<section>
+					<img class="img_noborder" src="images/tex.png" alt="TEX file" height="5%" width="5%">
+					<pre><code class="hljs" data-trim contenteditable>
+\item La inversa de la función
+	$\displaystyle\ln\left(\frac{x-2}{2x-1}\right)$ es:
+	\begin{enumerate}
+	\item\label{t3calcinversa} $x=\frac{e^y+2}{1-2e^y}.$
+	\item	$x=\frac{1-2e^y}{e^y2}.$
+	\item $$x=\frac{e^y+2}{2e^y-1}.$
+	\ref{t3calcinversa}
+					</code></pre>
+					</section>
+
+					<section>
+					<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+					<pre><code class="hljs" data-trim contenteditable>
+Do[
+  type = j; (*Introducción de la versión del examen. Tipos 1,2,...,numex*)
+	tjj = Flatten[Table[RandomChoice[allq[[i]],1], {i,1,numberquestions}]];
+(*Elección de una cuestión aleatoria del tópico i y genera una tabla*)
+	ptjj =Flatten[Table[Position[allqr[[i]], tjj[[i]]], {i,1,numberquestions}]];
+(*Posición de la cuestión elegida en la lista t11all y conversión a tabla*)
+	outexamen = TableForm[Table[tjj[[i]], {i,1,numberquestions}]] ;
+	  (*Cuestión elegida*)
+	outanswers = TableForm[Table[allqr[[i]][[ptjj[[i]]+1]], {i,1,numberquestions}]];
+	  (*Construye la tabla de respuestas*)
+	Export["C:\\Users\\Desktop\\type_"<>ToString[j]<>".tex",type,"Table"];
+	Export["C:\\Users\\Desktop\\outexamen_"<>ToString[j]<>".tex",outexamen,"Table"];
+	Export["C:\\Users\\Desktop\\outanswer_"<>ToString[j]<>".tex",outanswers,"Table"],
+	  {j, 1, numex}];
+	importresponses = Table[Import["C:\\Users\\Desktop\\outanswer_"<>
+	ToString[i]<>".tex","List"], {i,1,numex}];
+	finaltable = TableForm[Table[Insert[Insert[Insert[Insert[
+	Riffle[importresponses[[s]], "&"],"\\\\", -1],"Type",1],":&",2],s,2], {s,1,numex}]];
+	Export["C:\\Users\\Desktop\\finaltable.tex", finaltable,"Table"];
+					</code></pre>
+					</section>
+					<section>
+					<img class="img_noborder" src="images/pdf2.png" alt="PDF file" height="5%" width="5%">
+					<div style="width: 800px; height: 546px;">
+					<object data="pdf/examen.pdf" type="application/pdf" width="100%" height="100%">
+						<iframe src="pdf/examen.pdf" style="border: none;" width="100%" height="100%">
+							This browser does not support PDFs. Please download the PDF to view it: <a href="/pdf/sample-3pp.pdf">Download PDF</a>
+						</iframe>
+					</object>
+					</div>
+					</section>
+				</section>
+
+					<section>
+					<h3>Nueva versión</h3>
+					  <ul>
+					    <li>Las preguntas se generan aleatóriamente por Mathematica</li>
+							<li>Las salidas pueden ser</li>
+							  <ul>
+									<li>Ficheros TEX que compilados generan ficheros PDF</li>
+							    <li>Ficheros XML que Moodle puede importar a su banco de preguntas</li>
+								<ul>
+					  </ul>
+					</section>
+
+			<section>
+					<section>
+						<h4>Salidas en PDF</h4>
+						<div style="float: left; width: 25%;">
+							<div>
+								<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+							</div>
+							<div>
+							  <div class="rectangulo rectanguloE" style="background: #6a6aff;">
+								Estructura Pregunta A
+							  </div>
+							  <div class="rectangulo rectanguloE" style="background: #6a6aff;">
+								Estructura Pregunta B
+							  </div>
+							  <div class="rectangulo rectanguloE" style="background: #ff6a6a;">
+								Estructura Pregunta C
+							  </div>
+							  <div class="rectangulo rectanguloE" style="background: #ff6a6a;">
+								Estructura Pregunta D
+							  </div>
+							</div>
+						</div>
+
+					<div style="float: left; width: 25%;">
+						<div>
+							<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+						</div>
+						<div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta A1
+						  </div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta A2
+						  </div>
+							<div class="rectangulo" style="background: #6a6aff;">
+							Pregunta B1
+						  </div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta B2
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta C1
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta C2
+						  </div>
+							<div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta D1
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta D2
+						  </div>
+						</div>
+					</div>
+
+
+					<div style="float: left; width: 25%;">
+					  <div>
+					    <img class="img_noborder" src="images/tex.png" alt="TEX file" height="15%" width="15%">
+					  </div>
+					  <div>
+						<div>
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta A1
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta D1
+						  </div>
+						 </div>
+						 <div style="margin-top: 10px;">
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta A2
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta C2
+						  </div>
+						  </div>
+						  <div  style="margin-top: 10px;">
+						  <div class="rectangulo" style="background: #6a6aff;">
+							Pregunta B1
+						  </div>
+						  <div class="rectangulo" style="background: #ff6a6a;">
+							Pregunta C1
+						  </div>
+						  </div>
+
+						</div>
+					</div>
+					<div style="float: left; width: 25%;">
+
+					 <img class="img_noborder" src="images/pdf2.png" alt="PDF file" height="15%" width="15%">
+
+					</div>
+
+					</section>
+
+
+
+
+					<section>
+					<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+					<pre><code class="hljs" data-trim contenteditable>
+						StyleBox[
+						        RowBox[{"t22exto3", "=",
+						         RowBox[{
+						         "\"\<\\\\item La inversa de la funci\\'on $\\displaystyle \
+						y=\\input{f22_\>\"", "<>",
+						          RowBox[{"ToString", "[", "j", "]"}], "<>",
+						          "\"\<}$ es:\\\\begin{inparaenum}[\\\\hspace{1em}$a)$]\\\\par\\item \
+						$\\\\displaystyle x=\\\\input{s22olution3t_\>\"", "<>",
+						          RowBox[{"ToString", "[", "j", "]"}], "<>",
+						          "\"\<}.$\\\\item\\\\label{s22_\>\"", "<>",
+						          RowBox[{"ToString", "[", "j", "]"}], "<>",
+						          "\"\<} $\\\\displaystyle x=\\\\input{s22olution1t_\>\"", "<>",
+						          RowBox[{"ToString", "[", "j", "]"}], "<>",
+						          "\"\<}.$\\\\item $\\\\displaystyle x=\\\\input{s22olution2t_\>\"", "<>",
+						          RowBox[{"ToString", "[", "j", "]"}], "<>",
+						          "\"\<}.$\\\\end{inparaenum}\>\""}]}],
+					</code></pre>
+					</section>
+					</section>
+		<section>
+			<section>
+				<h4>Salidas en XML</h4>
+				<div style="float: left; width: 25%;">
+					<div>
+						<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+					</div>
+					<div>
+						<div class="rectangulo rectanguloE" style="background: #6a6aff;">
+						Estructura Pregunta A
+						</div>
+						<div class="rectangulo rectanguloE" style="background: #6a6aff;">
+						Estructura Pregunta B
+						</div>
+						<div class="rectangulo rectanguloE" style="background: #ff6a6a;">
+						Estructura Pregunta C
+						</div>
+						<div class="rectangulo rectanguloE" style="background: #ff6a6a;">
+						Estructura Pregunta D
+						</div>
+					</div>
+				</div>
+
+			<div style="float: left; width: 25%;">
+				<div>
+					<img class="img_noborder" src="images/Mathematica_logo-type_sm.png" alt="Wolfram Mathematica Logo" height="50%" width="50%">
+				</div>
+				<div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta A1
+					</div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta A2
+					</div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta B1
+					</div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta B2
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta C1
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta C2
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta D1
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta D2
+					</div>
+				</div>
+			</div>
+
+
+			<div style="float: left; width: 25%;">
+				<div>
+					<img class="img_noborder" src="images/xml.png" alt="XML file" height="15%" width="15%">
+				</div>
+				<div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta A1
+					</div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta A2
+					</div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta B1
+					</div>
+					<div class="rectangulo" style="background: #6a6aff;">
+					Pregunta B2
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta C1
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta C2
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta D1
+					</div>
+					<div class="rectangulo" style="background: #ff6a6a;">
+					Pregunta D2
+					</div>
+				</div>
+			</div>
+			<div style="float: left; width: 25%;">
+
+			 <img class="img_noborder" src="images/moodle2.png" alt="Moodle" height="18%" width="18%">
+
+			</div>
+
+			</section>
+
+					<section>
+					<img class="img_noborder" src="images/xml.png" alt="XML file" height="5%" width="5%">
+					<pre><code class="hljs" data-trim contenteditable>
+<quiz>
+<question type="category">
+<category>
+<text>$course$/Tema 1. Funciones reales de variable real/Dominio</text>
+</category>
+</question>
+<question type="multichoice">
+<name>
+<text>Dominio 1:1</text>
+</name>
+<questiontext format="html">
+<text>Dada la función  $$f(x)=\sqrt{x^2-3 x+2},$$ su dominio es:</text>
+</questiontext>
+<answer fraction="100">
+<text>$$(-\infty,1]\cup [2,+\infty).$$</text>
+</answer>
+<answer fraction="0">
+<text>$$(-\infty,1)\cup (2,+\infty).$$</text>
+</answer>
+<answer fraction="0">
+<text>$$[1,2].$$</text>
+</answer>
+<shuffleanswers>1</shuffleanswers>
+</question>
+</quiz>
+					</code></pre>
+					</section>
+					<section>
+						<img src="images/importar.png" alt="Importar XML en Moodle">
+					</section>
+					<section>
+						<img src="images/importadas.png" alt="Preguntas importadas en Moodle">
+					</section>
+
+					<section>
+						Introducir imagen configuración cuestionario
+					</section>
+
+				</section>
+
+				<section>
+					<h4>Conclusiones</h4>
+					<ul>
+						<li>Presentamos script en Matmematica que generan exámenes en PDF y preguntas para su utilización en Moodle</li>
+						<li>Se tienen también las soluciones lo que facilita el proceso de corrección</li>
+						<li>Las preguntas son generadas aleatoriamente por Mathematica y clasificadas para el diseño de los exámenes en PDF o ciestionarios en Moodle</li>
+						<li>Al ser generadas aleatoriamente la probabilidad de que se repitan las pregun tas es muy bajo.</li>
+						
+					</ul>
+
+				</section>
+
+				<section data-state="no-title-footer" >
+					<h1 class="title">Generación automática de exámenes en PDF y cuestionarios Moodle con Mathematica</h1>
+					<!--<h4 class="author">Emilio Gómez / Nancy Dávila / Christian González</h4>
+					<h4 class="affilation">Universidad de Las Palmas de Gran Canaria</h4>-->
+					<div style="float:right;">
+					<h2 class="name_congress">XXV Jornadas de ASEPUMA - XIII Encuentro Internacional</h2>
+					<h3 class="date">A Coruña. Junio de 2016</h3>
+					</div>
+					<!--<div id="autores">
+						<ul>
+							<li>Emilio Gómez Déniz</li>
+							<li>Nancy Dávila Cárdenes</li>
+							<li>Christian González Martel</li>
+							<li style="font-style: oblique; font-size: 80%">Universidad de Las Palmas de Gran Canaria</li>
+						</ul>
+					</div>-->
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } }
+				]
+			});
+
+
+		</script>
+		<script type="text/javascript" src="plugin/markdown/marked.js"></script>
+		<script type="text/javascript" src="plugin/markdown/markdown.js"></script>
+		<script>
+
+			[].slice.call( document.querySelectorAll( '.share-reveal-facebook, .share-reveal-twitter' ) ).forEach( function( element ) {
+				element.addEventListener( 'click', function( event ) {
+					event.preventDefault();
+					var width = 500, height = 300;
+					var winTop = window.screenY + (window.screen.height / 2) - (height / 2);
+					var winLeft = window.screenX + (window.screen.width / 2) - (width / 2);
+					window.open(this.href, 'shre', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + width + ',height=' + height);
+				} );
+			} );
+
+			if( !navigator.userAgent.match( /(iphone|android)/gi ) && !!document.querySelector ) {
+				document.querySelector( '.share-reveal' ).style.display = 'block';
+				document.querySelector( '.fork-reveal' ).style.display = 'block';
+			}
+
+		</script>
+		<script type="text/javascript" src="plugin/highlight/highlight.js">
+		<script type="text/javascript" src="plugin/zoom-js/zoom.js"></script>
+		<script type="text/javascript" src="plugin/notes/notes.js"></script>
+
+
+	</body>
+</html>
